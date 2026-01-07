@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dealership Decision Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="/" class="navbar__logo"><b>Dealership Decision Hub</b></a>
+        <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <div class="navbar__menu">
+            <a href="/" class="navbar__link">Home</a>
+            <a href="/services.html" class="navbar__link">Features</a>
+            <a href="/plans.html" class="navbar__link">Stats</a>
+            <a href="/trainers.html" class="navbar__link">About Me</a>
+        </div>
+    </nav>
+
+    <!-- Membership -->
+    <div class="memberships">
+        <h1 class="animate-membership">Stats</h1>
+        <p class="membership__desc animate-membership">Assuming a conservative $2,500 front-end gross per vehicle...</p>
+        <div class="membership__wrapper">
+            <div class="membership__card animate-card">
+                <div class="membership__title">
+                    <i class="fas fa-user card-icon"></i>
+                    <h3>+1 Won Lead</h3>
+                </div>
+                <div class="membership__perks">
+                    <p>+$30,000/Year in Recovered Gross</p>
+                    <p>Higher ROI</p>
+                    <p>Improved Accountability</p>
+                </div>
+                <a href="https://selective-rosehip-00a.notion.site/Dealership-Decision-Hub-Free-2dc3d61e396180e9accec2aee2bc771d?source=copy_link" class="button">Decision Hub</a>
+            </div>
+            <div class="membership__card animate-card">
+                <div class="membership__title">
+                    <i class="fas fa-user-group card-icon"></i>
+                    <h3>+2 Won Leads</h3>
+                </div>
+                <div class="membership__perks">
+                    <p>+$60,000/Year in Recovered Gross</p>
+                    <p>Consistent Monthly Volume</p>
+                    <p>Performance Tracking</p>
+                </div>
+                <a href="https://selective-rosehip-00a.notion.site/Dealership-Decision-Hub-Free-2dc3d61e396180e9accec2aee2bc771d?source=copy_link" class="button">Decision Hub</a>
+            </div>
+            <div class="membership__card animate-card">
+                <div class="membership__title">
+                    <i class="fas fa-people-group card-icon"></i>
+                    <h3>+3 Won Leads</h3>
+                </div>
+                <div class="membership__perks">
+                    <p>+$90,000/Year in Recovered Gross</p>
+                    <p>Increased Net Profit Without Hiring or Ads</p>
+                    <p>Ownership-Level Confidence</p>
+                </div>
+                <a href="https://selective-rosehip-00a.notion.site/Dealership-Decision-Hub-Free-2dc3d61e396180e9accec2aee2bc771d?source=copy_link" class="button">Decision Hub</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer__wrapper">
+            <div class="footer__desc">
+                <h1>Dealership Decision Hub</h1>
+                <p>HQ located in Waynesboro, VA.</p>
+                <p id="phone">540 - 315 - 4575</p>
+            </div>
+            <div class="footer__links">
+                <div class="footer__title">Summary</div>
+                    <a href="/services.html" class="footer__link">Representation</a>
+                    <a href="/services.html" class="footer__link">Description</a>
+                    <a href="/services.html" class="footer__link">Recap</a>
+            </div>
+        </div>
+        <div class="footer__wrapper">
+            <div class="footer__links">
+                <div class="footer__title">Statistics</div>
+                    <a href="/plans.html" class="footer__link">Metrics</a>
+                    <a href="/plans.html" class="footer__link">Analytics</a>
+                    <a href="/plans.html" class="footer__link">Performance Data</a>
+            </div>
+            <div class="footer__links">
+                <div class="footer__title">Social Media</div>
+                    <a href="https://www.instagram.com/tylikmawyer/?utm_source=ig_embed&amp;utm_campaign=loading"" class="footer__link">Instagram</a>
+                    <a href="https://www.linkedin.com/in/tylik-mawyer" class="footer__link">LinkedIn</a>
+                    <a href="https://www.youtube.com/@T-g4i" class="footer__link">YouTube</a>
+                    <a href="https://github.com/ty-leark" class="footer__link">GitHub</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer__wrapper">
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+    <script src="https://kit.fontawesome.com/368eb08090.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+    const form = document.getElementById("emailForm");
+    const status = document.getElementById("emailStatus");
+
+    form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();
+
+    if (!email) {
+        status.textContent = "Please enter a valid email.";
+        return;
+    }
+
+    status.textContent = "Submitting...";
+
+    try {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbxr4KYLCfde4fyEbFc9N0CUG62O5ZUP53JzEmqEzPDtyzzJmBiQb5CWycawdzVjW_6oAg/exec", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+        status.textContent = "Email submitted successfully.";
+        form.reset();
+        } else {
+        status.textContent = "Submission failed. Please try again.";
+        }
+    } catch (error) {
+        status.textContent = "Network error. Please try again.";
+    }
+    });
+</script>
+</body>
+</html>
