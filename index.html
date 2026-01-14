@@ -156,24 +156,24 @@
             </div>
             <div class="footer__links">
                 <div class="footer__title">Summary</div>
-                    <a href="services.html" class="footer__link">Representation</a>
-                    <a href="services.html" class="footer__link">Description</a>
-                    <a href="services.html" class="footer__link">Recap</a>
+                <a href="services.html" class="footer__link">Representation</a>
+                <a href="services.html" class="footer__link">Description</a>
+                <a href="services.html" class="footer__link">Recap</a>
             </div>
         </div>
         <div class="footer__wrapper">
             <div class="footer__links">
                 <div class="footer__title">Statistics</div>
-                    <a href="plans.html" class="footer__link">Metrics</a>
-                    <a href="plans.html" class="footer__link">Analytics</a>
-                    <a href="plans.html" class="footer__link">Performance Data</a>
+                <a href="plans.html" class="footer__link">Metrics</a>
+                <a href="plans.html" class="footer__link">Analytics</a>
+                <a href="plans.html" class="footer__link">Performance Data</a>
             </div>
             <div class="footer__links">
                 <div class="footer__title">Social Media</div>
-                    <a href="https://www.instagram.com/tylikmawyer/?utm_source=ig_embed&amp;utm_campaign=loading" class="footer__link">Instagram</a>
-                    <a href="https://www.linkedin.com/in/tylik-mawyer" class="footer__link">LinkedIn</a>
-                    <a href="https://www.youtube.com/@T-g4i" class="footer__link">YouTube</a>
-                    <a href="https://github.com/ty-leark" class="footer__link">GitHub</a>
+                <a href="https://www.instagram.com/tylikmawyer/?utm_source=ig_embed&amp;utm_campaign=loading" class="footer__link">Instagram</a>
+                <a href="https://www.linkedin.com/in/tylik-mawyer" class="footer__link">LinkedIn</a>
+                <a href="https://www.youtube.com/@T-g4i" class="footer__link">YouTube</a>
+                <a href="https://github.com/ty-leark" class="footer__link">GitHub</a>
             </div>
         </div>
     </div>
@@ -185,62 +185,35 @@
     <script src="app.js"></script>
 
     <script>
-        const liveListEl = document.getElementById("liveList");
-        const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxC-2VpDgwQgDi_FIfqbJ9CivZWetKXr6ti_D3GDHiCSWR8YJ_Muzig_GuxzA1HRA8d/exec";
-
         const form = document.getElementById("emailForm");
         const status = document.getElementById("emailStatus");
-
-        async function fetchList() {
-          try {
-            const res = await fetch(WEBAPP_URL);
-            const json = await res.json();
-            if (json.success && Array.isArray(json.list)) {
-              renderList(json.list.slice(0, 50));
-            }
-          } catch (err) {
-            // silently fail
-          }
-        }
-
-        function renderList(items) {
-          liveListEl.innerHTML = "";
-          items.forEach(it => {
-            const li = document.createElement("li");
-            li.textContent = `${new Date(it.timestamp).toLocaleString()} — ${it.email}`;
-            liveListEl.appendChild(li);
-          });
-        }
+        const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxC-2VpDgwQgDi_FIfqbJ9CivZWetKXr6ti_D3GDHiCSWR8YJ_Muzig_GuxzA1HRA8d/exec";
 
         form.addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const email = document.getElementById("email").value.trim();
-          if (!email) {
-            status.textContent = "Please enter a valid email.";
-            return;
-          }
-          status.textContent = "Submitting...";
-          try {
-            const response = await fetch(WEBAPP_URL, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ email })
-            });
-            const result = await response.json();
-            if (result.success) {
-              status.textContent = "Email submitted successfully.";
-              form.reset();
-              fetchList();
-            } else {
-              status.textContent = "Submission failed. Please try again.";
+            e.preventDefault();
+            const email = document.getElementById("email").value.trim();
+            if (!email) {
+                status.textContent = "Please enter a valid email.";
+                return;
             }
-          } catch (error) {
-            status.textContent = "Network error. Please try again.";
-          }
+            status.textContent = "Submitting...";
+            try {
+                const response = await fetch(WEBAPP_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email })
+                });
+                const result = await response.json();
+                if (result.success) {
+                    status.textContent = "Email submitted successfully.";
+                    form.reset();
+                } else {
+                    status.textContent = "Submission failed. Please try again.";
+                }
+            } catch (error) {
+                status.textContent = "Network error. Please try again.";
+            }
         });
-
-        fetchList();
-        setInterval(fetchList, 15000);
     </script>
 </body>
 </html>
