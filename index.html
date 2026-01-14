@@ -222,7 +222,39 @@
     const form = document.getElementById("emailForm");
     const status = document.getElementById("emailStatus");
 
-    form.addEventListener("submit", async (e) => {
+    form.addEventListener("submit", async (e) => {form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+        
+    const email = document.getElementById("email").value.trim();
+        
+    if (!email) {
+        status.textContent = "Please enter a valid email.";
+        return;
+    }
+        
+    status.textContent = "Submitting...";
+        
+      try {
+        const response = await fetch(WEBAPP_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email })
+        });
+          
+    const result = await response.json();
+          
+    if (result.success) {
+      status.textContent = "Email submitted successfully.";
+      form.reset();
+      fetchList();
+    } 
+    else {
+      status.textContent = "Submission failed. Please try again.";
+    }
+      } catch (error) {
+    status.textContent = "Network error. Please try again.";
+      }
+    });
     e.preventDefault();
 
     const email = document.getElementById("email").value.trim();
