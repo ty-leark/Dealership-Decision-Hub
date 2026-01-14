@@ -286,6 +286,26 @@
     } catch (error) {
         status.textContent = "Network error. Please try again.";
     }
+    async function fetchList() {
+  try {
+    const res = await fetch(WEBAPP_URL);
+    const json = await res.json();
+    if (json.success && Array.isArray(json.list)) {
+      renderList(json.list.slice(0, 50));
+    }
+  } catch (err) {
+    // silently fail
+  }
+}
+
+function renderList(items) {
+  liveListEl.innerHTML = "";
+  items.forEach(it => {
+    const li = document.createElement("li");
+    li.textContent = `${new Date(it.timestamp).toLocaleString()} — ${it.email}`;
+    liveListEl.appendChild(li);
+  });
+}
     });
 </script>
 
